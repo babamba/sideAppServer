@@ -1,0 +1,110 @@
+#: src/components/Auth/presenter.js
+msgid "Don't have an account?"
+msgstr ""
+
+#: src/components/Auth/presenter.js
+#: src/components/AuthForms/index.js
+msgid "Sign up"
+msgstr ""
+
+#: src/components/Auth/presenter.js
+msgid "Have an account?"
+msgstr ""
+
+#: src/components/Auth/presenter.js
+#: src/components/AuthForms/index.js
+msgid "Log in"
+msgstr ""
+
+#: src/components/Auth/presenter.js
+msgid "Get the app"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "Username"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "Password"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "or"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "with Facebook"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "Forgot password?"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "Sign up to see photos and videos from your friends."
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "Log in with Facebook"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "Email"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "Full Name"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "By signing up, you agree to our"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "Terms & Privacy Policy"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "ABOUT US"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "SUPPORT"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "PRESS"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "API"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "JOBS"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "PRIVACY"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "TERMS"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "DIRECTORY"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "PROFILES"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "HASHTAGS"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "LANGUAGE"
+msgstr ""
+

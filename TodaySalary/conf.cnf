@@ -1,0 +1,8 @@
+# conf.cnf
+
+[client]
+database = starlord
+host = xhiftcorp.ipdisk.co.kr​
+user = starlord
+password = f8yJtthy5ur3vYFn
+port = 3306
