@@ -38,28 +38,28 @@ app_name = "images"
 
 urlpatterns = [
     # 피드 보기 (사진 리스트)
-    path("", view=views.Images.as_view(), name="feed"),
+    #path("", view=views.Images.as_view(), name="feed"),
 
     # 이미지 상세
-    path("<int:image_id>/", view=views.ImageDetail.as_view(), name="image_detail"),
+    # path("<int:image_id>/", view=views.ImageDetail.as_view(), name="image_detail"),
 
     # 이미지 좋아요
-    path("<int:image_id>/likes/", view=views.LikeImage.as_view(), name="like_image"),
+    # path("<int:image_id>/likes/", view=views.LikeImage.as_view(), name="like_image"),
 
     # 이미지 좋아요 취소
-    path("<int:image_id>/unlikes/", view=views.UnLikeImage.as_view(), name="unlike_image"),
+    # path("<int:image_id>/unlikes/", view=views.UnLikeImage.as_view(), name="unlike_image"),
 
     # 코멘트 등록
-    path("<int:image_id>/comments/", view=views.CommentOnImage.as_view(), name="comment_image"),
+    # path("<int:image_id>/comments/", view=views.CommentOnImage.as_view(), name="comment_image"),
 
     # 현재 사용자 유저의 글에 댓글 삭제
-    path("<int:image_id>/comments/<int:comment_id>", view=views.moderateComments.as_view(), name="moderate_comments"),
+    # path("<int:image_id>/comments/<int:comment_id>", view=views.moderateComments.as_view(), name="moderate_comments"),
 
     # 
-    path("comments/<int:comment_id>/", view=views.Comment.as_view(), name="comment"),
+    # path("comments/<int:comment_id>/", view=views.Comment.as_view(), name="comment"),
 
     # 해쉬태그로 이미지 검색
-    path("search/", view=views.Search.as_view(), name="search")
+    # path("search/", view=views.Search.as_view(), name="search")
 ]
 
 # 장고 업데이트로 인한 url path의 정규식사용
