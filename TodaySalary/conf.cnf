@@ -1,8 +1,0 @@
-# conf.cnf
-
-[client]
-database = todaysalary
-host = hellojw.net
-user = todaysalary
-password = xhift20!8
-port = 3306
