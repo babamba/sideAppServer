@@ -31,20 +31,20 @@ class User(AbstractUser):
     # 하는데 B의 프로필을 보면 같은 팔로잉이 되어있는 상황  symmetrical=False,  related_name="user"
     # 이와같이 해결해야하는 것 같음. 
     
-    followers = models.ManyToManyField("self", symmetrical=False, related_name="user_followers")
-    following = models.ManyToManyField("self", blank=True, symmetrical=False, related_name="user_following")
+    # followers = models.ManyToManyField("self", symmetrical=False, related_name="user_followers")
+    # following = models.ManyToManyField("self", blank=True, symmetrical=False, related_name="user_following")
 
     def __str__(self):
              return self.username
 
-    @property
-    def post_count(self):
-        return self.images.all().count()
+    # @property
+    # def post_count(self):
+    #     return self.images.all().count()
 
-    @property
-    def followers_count(self):
-        return self.followers.all().count()
+    # @property
+    # def followers_count(self):
+    #     return self.followers.all().count()
     
-    @property
-    def following_count(self):
-        return self.following.all().count()
+    # @property
+    # def following_count(self):
+    #     return self.following.all().count()

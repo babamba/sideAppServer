@@ -85,13 +85,13 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 class SignUpSerializer(RegisterSerializer):
 
-    name = serializers.CharField(required=True, write_only=True)
+    username = serializers.CharField(required=True, write_only=True)
 
     def get_cleaned_data(self):
         return {
-            'name': self.validated_data.get('name', ''),
+             # 'name': self.validated_data.get('name', ''),
             'username': self.validated_data.get('username', ''),
-            'password1': self.validated_data.get('password1', ''),
+            'password': self.validated_data.get('password', ''),
             'email': self.validated_data.get('email', '')
         }
     

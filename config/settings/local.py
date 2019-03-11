@@ -12,6 +12,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "0.0.0.0",
     "10.70.1.215",
+    "127.0.0.1"
 ]
 
 # CACHES

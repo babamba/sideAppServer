@@ -26,8 +26,10 @@ urlpatterns = [
     # ADD rest_auth.registration
     path("rest-auth/registration/", include('rest_auth.registration.urls')),
 
+    #salary
     # User management
     path("users/", include("TodaySalary.users.urls", namespace="users")),
+    path("salary/", include("TodaySalary.salary.urls", namespace="salary")),
     path("images/", include("TodaySalary.images.urls", namespace="images")),
     path("notifications/", include("TodaySalary.notifications.urls", namespace="notifications")),
     path("accounts/", include("allauth.urls")),

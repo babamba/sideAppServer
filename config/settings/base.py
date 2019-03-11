@@ -104,6 +104,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'TodaySalary.users.apps.UsersConfig',
     'TodaySalary.images.apps.ImagesConfig',
+    'TodaySalary.salary.apps.SalaryConfig',
     'TodaySalary.notifications.apps.NotificationsConfig'
     # Your stuff: custom apps go here
 ]
