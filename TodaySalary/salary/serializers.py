@@ -29,4 +29,5 @@ class EnrollCousumSerializer(serializers.ModelSerializer):
             'feeling',
             'consumType',
             'creator',
+            'created_at'
         )

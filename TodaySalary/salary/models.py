@@ -25,12 +25,12 @@ class Income(TimeStampedModel):
     enrollId = models.AutoField(auto_created=True, primary_key=True)       # 등록 pk id
     price = models.IntegerField(default=0)                                 # 등록 금액
     feeling = models.CharField(max_length=1, null=True, default=0)         # 기분상태
-    consumType = models.CharField(max_length=1, null=True, default=0)      # 0 : 수입 & 1 :지출 타입 
+    consumType = models.CharField(max_length=1, null=True, default=0)      # 0 : 수입 & 1 : 밥값지출  2: 개인지출 
     creator = models.ForeignKey(user_models.User, on_delete=models.CASCADE, null=True, related_name='salary')
 
-    @property
-    def natural_time(self):
-        return naturaltime(self.created_at)
+#     @property
+#     def natural_time(self):
+#         return naturaltime(self.created_at)
 
     class Meta:
         ordering = ['-created_at']

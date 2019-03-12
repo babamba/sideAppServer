@@ -13,17 +13,28 @@ class Consum(APIView):
 
      # 소비 등록 
      def post(self, request, format=None):
-          # print(request.user)
+         
           
           user = request.user
 
           serializer = serializers.EnrollCousumSerializer(data=request.data)
 
           if serializer.is_valid():
-               serializer.save(creator=user)
-               return Response(data=serializer.data, status = status.HTTP_201_CREATED)
+               saveData = serializer.save(creator=user)
+               serializer.created_at = saveData.created_at
+               serializer.enrollId = saveData.enrollId
+               print(saveData.enrollId)
+               print(serializer.enrollId)
+               print(serializer.data)
+               return Response(data=serializer.data ,status = status.HTTP_201_CREATED)
           else:
                return Response(data=serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
+
+     # def get(self, request, format=None):
+     #     user = request.user
+
+     #     image_list = []
 
 
      #def get(self, request, format=None):

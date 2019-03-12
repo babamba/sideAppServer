@@ -43,11 +43,11 @@ class UserProfileSerializer(serializers.ModelSerializer):
     
     images = images_serializers.ImageSerializer(many=True, read_only=True)
     # ReadOnlyField 는 ㅎ당 필드들을 수정하지않는다.
-    post_count = serializers.ReadOnlyField()
-    followers_count = serializers.ReadOnlyField()
-    following_count = serializers.ReadOnlyField()
-    is_self = serializers.SerializerMethodField()
-    following = serializers.SerializerMethodField()
+    #post_count = serializers.ReadOnlyField()
+    #followers_count = serializers.ReadOnlyField()
+    #following_count = serializers.ReadOnlyField()
+    #is_self = serializers.SerializerMethodField()
+    #following = serializers.SerializerMethodField()
 
     class Meta:
         model = models.User
@@ -57,31 +57,31 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'username',
             'name',
             'bio',
-            'website',
-            'post_count',
-            'followers_count',
-            'following_count',
+            #'website',
+            #'post_count',
+            #'followers_count',
+            #'following_count',
             'images',
-            'is_self',
-            'following'
+            #'is_self',
+            #'following'
         )
 
-    def get_is_self(self, user):
-        if 'request' in self.context:
-            request = self.context['request']
-            if user.id == request.user.id:
-                return True
-            else:
-                return False
-        return False
+    # def get_is_self(self, user):
+    #     if 'request' in self.context:
+    #         request = self.context['request']
+    #         if user.id == request.user.id:
+    #             return True
+    #         else:
+    #             return False
+    #     return False
 
-    def get_following(self, obj):
-        if 'request' in self.context:
-            request = self.context['request']
+    # def get_following(self, obj):
+    #     if 'request' in self.context:
+    #         request = self.context['request']
 
-            if obj in request.user.following.all():
-                return True
-        return False
+    #         if obj in request.user.following.all():
+    #             return True
+    #     return False
 
 class SignUpSerializer(RegisterSerializer):
 
