@@ -38,16 +38,17 @@ class Income(TimeStampedModel):
         ordering = ['-created_at']
 
 class SalaryData(TimeStampedModel):
-    isSetData = models.BooleanField(),
-    monthSallery = models.IntegerField(default=0),
-    selectWeek = models.CharField(max_length=100, null=True),  #일하는 요일 배열 
-    workingWeekDay = models.IntegerField(default=0),  # 카운팅
-    workingHour = models.IntegerField(default=0),
-    startHour = models.IntegerField(default=0),
-    endHour = models.IntegerField(default=0),
-    salaryDay = models.IntegerField(default=0),
-    salaryPayType = models.IntegerField(default=0),
-    standardMonth = models.IntegerField(default=0),
+    creator = models.ForeignKey(user_models.User, on_delete=models.CASCADE, null=True, related_name='user')
+    isSetData = models.BooleanField(default=False)
+    monthSallery = models.IntegerField(default=0)
+    selectWeek = models.CharField(max_length=100, null=True)  #일하는 요일 배열 
+    workingWeekDay = models.IntegerField(default=0)  # 카운팅
+    workingHour = models.IntegerField(default=0)
+    startHour = models.IntegerField(default=0)
+    endHour = models.IntegerField(default=0)
+    salaryDay = models.IntegerField(default=0)
+    salaryPayType = models.IntegerField(default=0)
+    standardMonth = models.IntegerField(default=0)
 
     class Meta:
         ordering = ['-created_at']

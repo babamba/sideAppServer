@@ -10,6 +10,26 @@ from datetime import date, datetime, time
 
 # Create your views here.
 # 소비관련 CRUD
+
+class SalaryData(APIView):
+     
+     # 소비 등록 
+     def post(self, request, format=None):
+          user = request.user
+
+          serializer = serializers.UserSalarySerializer(data=request.data)
+
+          if serializer.is_valid():
+               saveData = serializer.save(creator=user)
+               # serializer.created_at = saveData.created_at
+               # serializer.enrollId = saveData.enrollId
+               # print(saveData.enrollId)
+               # print(serializer.enrollId)
+               print(saveData)
+               return Response(data=serializer.data ,status = status.HTTP_201_CREATED)
+          else:
+               return Response(data=serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
 class Consum(APIView):
 
      # 소비 등록 

@@ -31,3 +31,26 @@ class EnrollCousumSerializer(serializers.ModelSerializer):
             'creator',
             'created_at'
         )
+
+
+class UserSalarySerializer(serializers.ModelSerializer):
+         
+    # 필수가 아니어도 되도록 시리얼라이저에서 변경 가능한 방법
+    # file = serializers.FileField(required=False)
+    creator = UserProfileSerializer(read_only=True)
+
+    class Meta:
+        model = models.SalaryData
+        fields = (
+            'creator',
+            'isSetData',
+            'monthSallery',
+            'selectWeek',
+            'workingWeekDay',
+            'workingHour',
+            'startHour',
+            'endHour',
+            'salaryDay',
+            'salaryPayType',
+            'standardMonth',
+        )
