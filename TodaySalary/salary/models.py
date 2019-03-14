@@ -18,6 +18,8 @@ class TimeStampedModel(models.Model):
     class Meta:
         abstract = True
 
+# 정보등록 0 : 수입 & 1 : 밥값지출  2: 소비지출 
+
 class Income(TimeStampedModel):
 
     # 수입 정보 ( 타임스탬프 클래스 상속 )
@@ -27,7 +29,7 @@ class Income(TimeStampedModel):
     feeling = models.CharField(max_length=1, null=True, default=0)         # 기분상태
     consumType = models.CharField(max_length=1, null=True, default=0)      # 0 : 수입 & 1 : 밥값지출  2: 개인지출 
     creator = models.ForeignKey(user_models.User, on_delete=models.CASCADE, null=True, related_name='salary')
-
+    
 #     @property
 #     def natural_time(self):
 #         return naturaltime(self.created_at)
