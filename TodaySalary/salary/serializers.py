@@ -52,5 +52,4 @@ class UserSalarySerializer(serializers.ModelSerializer):
             'endHour',
             'salaryDay',
             'salaryPayType',
-            'standardMonth',
         )

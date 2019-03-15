@@ -47,8 +47,7 @@ class SalaryData(TimeStampedModel):
     startHour = models.IntegerField(default=0)
     endHour = models.IntegerField(default=0)
     salaryDay = models.IntegerField(default=0)
-    salaryPayType = models.IntegerField(default=0)
-    standardMonth = models.IntegerField(default=0)
+    salaryPayType = models.CharField(max_length=50, null=False)
 
     class Meta:
         ordering = ['-created_at']

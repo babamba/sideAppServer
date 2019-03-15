@@ -16,8 +16,11 @@ class SalaryData(APIView):
      # 소비 등록 
      def post(self, request, format=None):
           user = request.user
+          print(user)
+          
 
           serializer = serializers.UserSalarySerializer(data=request.data)
+          print(serializer)
 
           if serializer.is_valid():
                saveData = serializer.save(creator=user)
