@@ -33,6 +33,24 @@ class SalaryData(APIView):
           else:
                return Response(data=serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
+     def get(self, request, format=None):
+          
+
+          user = request.user
+          userObject = user_model.User.objects.get(username=user)
+          #print(userObject)
+
+          user_timer_data = models.SalaryData.objects.filter(id=userObject.id)
+
+          #print(user_timer_data)
+          serializer = serializers.UserSalarySerializer(
+               user_timer_data, many=True, context={'request': request})
+          print(serializer.data)
+          
+          return Response(data=serializer.data , status  = status.HTTP_200_OK)
+          #serializer = serializers.
+         
+
 class Consum(APIView):
 
      # 소비 등록 
