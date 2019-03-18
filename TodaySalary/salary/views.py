@@ -13,42 +13,57 @@ from datetime import date, datetime, time
 
 class SalaryData(APIView):
      
+     def find_own_data(self, creator_id):
+          try:
+          # 요청하는 사람이 올린 이미지인지 확인
+               data = models.SalaryData.objects.get(creator=creator_id)
+               return data
+          except models.SalaryData.DoesNotExist:
+            return None
+
      # 소비 등록 
      def post(self, request, format=None):
           user = request.user
           print(user)
-          
 
-          serializer = serializers.UserSalarySerializer(data=request.data)
+          userObject = user_model.User.objects.get(username=user)
+
+          user_timer_data =  self.find_own_data(userObject.id)
+
+          #user_timer_data = models.SalaryData.objects.filter(creator=userObject.id)
+          if user_timer_data is not None:
+               serializer = serializers.UserSalarySerializer(user_timer_data, data=request.data, partial=True)
+          else :
+               serializer = serializers.UserSalarySerializer(data=request.data)
+
           print(serializer)
 
           if serializer.is_valid():
+               
                saveData = serializer.save(creator=user)
                # serializer.created_at = saveData.created_at
                # serializer.enrollId = saveData.enrollId
                # print(saveData.enrollId)
                # print(serializer.enrollId)
-               print(saveData)
+               print("save?",saveData)
                return Response(data=serializer.data ,status = status.HTTP_201_CREATED)
           else:
                return Response(data=serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
      def get(self, request, format=None):
-          
-
           user = request.user
           userObject = user_model.User.objects.get(username=user)
-          #print(userObject)
 
-          user_timer_data = models.SalaryData.objects.filter(id=userObject.id)
-
-          #print(user_timer_data)
+          user_timer_data = models.SalaryData.objects.filter(creator=userObject.id)
+          
           serializer = serializers.UserSalarySerializer(
                user_timer_data, many=True, context={'request': request})
           print(serializer.data)
           
           return Response(data=serializer.data , status  = status.HTTP_200_OK)
           #serializer = serializers.
+
+          #return Response(status  = status.HTTP_200_OK)
          
 
 class Consum(APIView):

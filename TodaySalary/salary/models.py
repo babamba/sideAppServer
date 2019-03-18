@@ -38,6 +38,7 @@ class Income(TimeStampedModel):
         ordering = ['-created_at']
 
 class SalaryData(TimeStampedModel):
+    id = models.AutoField(auto_created=True, primary_key=True)       # 등록 pk id
     creator = models.ForeignKey(user_models.User, on_delete=models.CASCADE, null=True, related_name='user')
     isSetData = models.BooleanField(default=False)
     monthSallery = models.IntegerField(default=0)

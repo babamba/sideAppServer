@@ -42,6 +42,7 @@ class UserSalarySerializer(serializers.ModelSerializer):
     class Meta:
         model = models.SalaryData
         fields = (
+            'id',
             'creator',
             'isSetData',
             'monthSallery',
