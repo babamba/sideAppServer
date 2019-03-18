@@ -24,6 +24,7 @@ class EnrollCousumSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Income
         fields = (
+            'enrollId',
             'income_name',
             'price',
             'feeling',
