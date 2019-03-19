@@ -216,3 +216,36 @@ class MonthData(APIView):
           # print(serializer)
 
           return Response(data=month_serializer.data ,status = status.HTTP_200_OK)
+
+
+class AllData(APIView):
+     
+     def get(self, request, date, type, format=None):
+          user = request.user
+          userObject = user_model.User.objects.get(username=user)
+          convert_date = datetime.strptime(date, "%Y%m%d").date()
+
+          date = datetime(convert_date.year, convert_date.month , convert_date.day + 1)
+
+          #월급 날짜 21짜 부터 다음달 21일자 (+1) 까지 
+
+          #print(convert_date)
+          print(date)
+
+          # today_data = models.Income.objects.filter(creator_id=userObject.id, 
+          #                                     created_at__gte=convert_date)
+          
+          all_data = models.Income.objects.filter(creator_id=userObject.id,
+                                                  created_at__lte=date,
+                                                  consumType=type
+                                                  )
+
+          all_data_serializer = serializers.EnrollCousumSerializer(
+               all_data, many=True, context={'request': request})
+
+
+          #data = [today_serializer, month_serializer]
+
+          # print(serializer)
+
+          return Response(data=all_data_serializer.data ,status = status.HTTP_200_OK)
