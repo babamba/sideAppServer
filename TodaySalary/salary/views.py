@@ -8,6 +8,7 @@ from TodaySalary.notifications import views as notification_views
 from TodaySalary.users import models as user_model
 from datetime import date, datetime, time
 
+
 # Create your views here.
 # 소비관련 CRUD
 
@@ -292,13 +293,12 @@ class TodayReportData(APIView):
           # month_serializer = serializers.EnrollCousumSerializer(
           #      month_data, many=True, context={'request': request})
 
-
+          
           #data = [today_serializer, month_serializer]
 
           # print(serializer)
 
           return Response(data=today_serializer.data ,status = status.HTTP_200_OK)
-
 
 class MonthReportData(APIView):
      
