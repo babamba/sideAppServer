@@ -8,7 +8,7 @@ from TodaySalary.images import serializers as image_serializer
 class NotificationSerializer(serializers.ModelSerializer):
     
     creator = user_serializer.ListUserSerializer()
-    image = image_serializer.SmallImageSerializer()
+    #image = image_serializer.SmallImageSerializer()
 
     class Meta:
         model = models.Notification
