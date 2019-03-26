@@ -31,4 +31,5 @@ urlpatterns = [
 
     path("login/facebook/", view=views.FacebookLogin.as_view(), name="fb_login"),
     
+    path("push/", view=views.RegisterPush.as_view(), name="push")
 ]
