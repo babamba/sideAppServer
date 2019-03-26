@@ -26,7 +26,8 @@ class User(AbstractUser):
     bio = models.TextField(null=True)
     phone = models.CharField(max_length=140, null=True)
     gender = models.CharField(max_length=80, choices=GENDER_CHOICES, null=True)
-
+    push_token = models.TextField(default='')
+    
     # A가 B를 팔로잉을 하면 B의 팔로워가 되어야 
     # 하는데 B의 프로필을 보면 같은 팔로잉이 되어있는 상황  symmetrical=False,  related_name="user"
     # 이와같이 해결해야하는 것 같음. 
