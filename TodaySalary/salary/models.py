@@ -26,8 +26,8 @@ class Income(TimeStampedModel):
     income_name = models.CharField(max_length=140)                         # 등록 내용
     enrollId = models.AutoField(auto_created=True, primary_key=True)       # 등록 pk id
     price = models.IntegerField(default=0)                                 # 등록 금액
-    feeling = models.CharField(max_length=1, null=True, default=0)         # 기분상태
-    consumType = models.CharField(max_length=1, null=True, default=0)      # 0 : 수입 & 1 : 밥값지출  2: 개인지출 
+    feeling = models.CharField(max_length=1, null=True, default=0)         # 기분상태 0 : 좋아 & 1 : 보통  2: 후회 3: 고정지출
+    consumType = models.CharField(max_length=1, null=True, default=0)      # 0 : 수입 & 1 : 밥값지출  2: 개인지출 3: 고정지출
     creator = models.ForeignKey(user_models.User, on_delete=models.CASCADE, null=True, related_name='salary')
     
 #     @property

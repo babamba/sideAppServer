@@ -19,4 +19,6 @@ urlpatterns = [
     path("<str:date>/<int:standard_month>/<int:salary_day>/<int:type>/month_data/", view=views.MonthData.as_view(), name="get_save_data"),
 
     path("<str:date>/<int:type>/all_data/", view=views.AllData.as_view(), name="get_all_data"),
+
+     path("fix_consum_data/", view=views.FixConsum.as_view(), name="fix_consum_data"),
 ]

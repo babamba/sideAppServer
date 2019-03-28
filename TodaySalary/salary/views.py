@@ -86,6 +86,20 @@ class Consum(APIView):
           else:
                return Response(data=serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
+# 고정지출 목록 
+class FixConsum(APIView):
+     def get(self, request, format=None):
+          user = request.user
+          userObject = user_model.User.objects.get(username=user)
+
+          fix_data = models.Income.objects.filter(creator_id=userObject.id, consumType=3)
+
+          fix_serializer = serializers.EnrollCousumSerializer(
+               fix_data, many=True, context={'request': request})
+
+          return Response(data=fix_serializer.data ,status = status.HTTP_200_OK)
+
+
 # 특정날짜 오늘 하루 수입지출 내역정보 리턴
 class TodayData(APIView):
 
