@@ -20,5 +20,7 @@ urlpatterns = [
 
     path("<str:date>/<int:type>/all_data/", view=views.AllData.as_view(), name="get_all_data"),
 
-     path("fix_consum_data/", view=views.FixConsum.as_view(), name="fix_consum_data"),
+    path("fix_consum_data/", view=views.FixConsum.as_view(), name="fix_consum_data"),
+
+    path("<int:enrollId>/fix_consum_delete/", view=views.FixConsum.as_view(), name="fix_consum_data"),
 ]

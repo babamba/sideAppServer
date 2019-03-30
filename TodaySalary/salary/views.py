@@ -98,6 +98,21 @@ class FixConsum(APIView):
                fix_data, many=True, context={'request': request})
 
           return Response(data=fix_serializer.data ,status = status.HTTP_200_OK)
+     
+     def delete(self, request, enrollId, format=None):
+
+         user = request.user
+
+         try:
+            preexisiting_income = models.Income.objects.get(
+                creator=user,
+                enrollId=enrollId
+            )
+            preexisiting_income.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+         except models.Income.DoesNotExist:
+             return Response(status=status.HTTP_304_NOT_MODIFIED)
 
 
 # 특정날짜 오늘 하루 수입지출 내역정보 리턴
