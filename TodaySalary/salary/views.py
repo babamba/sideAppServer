@@ -6,7 +6,7 @@ from . import models, serializers
 from TodaySalary.users import serializers as user_serializers
 from TodaySalary.notifications import views as notification_views
 from TodaySalary.users import models as user_model
-from datetime import date, datetime, time
+from datetime import date, datetime, time, timedelta
 
 
 # Create your views here.
@@ -25,7 +25,7 @@ class SalaryData(APIView):
      # 소비 등록 
      def post(self, request, format=None):
           user = request.user
-          print(user)
+          #print(user)
 
           userObject = user_model.User.objects.get(username=user)
 
@@ -37,7 +37,7 @@ class SalaryData(APIView):
           else :
                serializer = serializers.UserSalarySerializer(data=request.data)
 
-          print(serializer)
+          #print(serializer)
 
           if serializer.is_valid():
                
@@ -46,7 +46,7 @@ class SalaryData(APIView):
                # serializer.enrollId = saveData.enrollId
                # print(saveData.enrollId)
                # print(serializer.enrollId)
-               print("save?",saveData)
+               #print("save?",saveData)
                return Response(data=serializer.data ,status = status.HTTP_201_CREATED)
           else:
                return Response(data=serializer.errors, status = status.HTTP_400_BAD_REQUEST)
@@ -59,7 +59,7 @@ class SalaryData(APIView):
           
           serializer = serializers.UserSalarySerializer(
                user_timer_data, many=True, context={'request': request})
-          print(serializer.data)
+          #print(serializer.data)
           
           return Response(data=serializer.data , status  = status.HTTP_200_OK)
           #serializer = serializers.
@@ -79,9 +79,9 @@ class Consum(APIView):
                saveData = serializer.save(creator=user)
                serializer.created_at = saveData.created_at
                serializer.enrollId = saveData.enrollId
-               print(saveData.enrollId)
-               print(serializer.enrollId)
-               print(serializer.data)
+               #print(saveData.enrollId)
+               #print(serializer.enrollId)
+               #print(serializer.data)
                return Response(data=serializer.data ,status = status.HTTP_201_CREATED)
           else:
                return Response(data=serializer.errors, status = status.HTTP_400_BAD_REQUEST)
@@ -150,14 +150,14 @@ class TodayData(APIView):
           # month_data = models.Income.objects.filter(creator_id=userObject.id,
           #                                         created_at__range=[start_date, end_date]
                                                    )
-          print("today", today)
-          print("tommorrow", tommorrow)
-          print("today_data", today_data)
+          #print("today", today)
+          #print("tommorrow", tommorrow)
+          #print("today_data", today_data)
 
-          print("userObject", userObject.id)
-          print("convert_date", convert_date.year)
-          print("convert_date", convert_date.month)
-          print("convert_date", convert_date.day)
+          #print("userObject", userObject.id)
+          #print("convert_date", convert_date.year)
+          #print("convert_date", convert_date.month)
+          #print("convert_date", convert_date.day)
           # # Incomes = models.Income.objects.filter(creator_id=userObject.id)
           today_serializer = serializers.EnrollCousumSerializer(
                today_data, many=True, context={'request': request})
@@ -216,9 +216,9 @@ class MonthData(APIView):
           userObject = user_model.User.objects.get(username=user)
           convert_date = datetime.strptime(date, "%Y%m%d").date()
 
-          print(standard_month - 1)
-          print(standard_month)
-          print(salary_day)
+          #print(standard_month - 1)
+          #print(standard_month)
+          #print(salary_day)
 
           start_date = datetime(convert_date.year, ( standard_month - 1) , salary_day)
           end_date = datetime(convert_date.year, standard_month, ( salary_day + 1))
@@ -226,8 +226,8 @@ class MonthData(APIView):
           #월급 날짜 21짜 부터 다음달 21일자 (+1) 까지 
 
           #print(convert_date)
-          print(start_date)
-          print(end_date)
+          #print(start_date)
+          #print(end_date)
 
           # today_data = models.Income.objects.filter(creator_id=userObject.id, 
           #                                     created_at__gte=convert_date)
@@ -260,7 +260,7 @@ class AllData(APIView):
           #월급 날짜 21짜 부터 다음달 21일자 (+1) 까지 
 
           #print(convert_date)
-          print(date)
+          #print(date)
 
           # today_data = models.Income.objects.filter(creator_id=userObject.id, 
           #                                     created_at__gte=convert_date)
@@ -301,8 +301,10 @@ class TodayReportData(APIView):
           day = convert_date.day
 
           today = datetime(year, month , day)
-          tommorrow = datetime(year, month, day + 1)
-
+          #tommorrow = datetime(year, month, day + 1)
+          tommorrow =  today + timedelta(days = 1)
+          print('today', today)
+          print('tommorrow', tommorrow)
           today_data = models.Income.objects.filter( 
                                               created_at__range=[today, tommorrow],
                                               creator_id=userObject.id,
@@ -336,9 +338,9 @@ class MonthReportData(APIView):
           userObject = user_model.User.objects.get(username=user)
           convert_date = datetime.strptime(date, "%Y%m%d").date()
 
-          print(standard_month - 1)
-          print(standard_month)
-          print(salary_day)
+          #print(standard_month - 1)
+          #print(standard_month)
+          #print(salary_day)
 
           start_date = datetime(convert_date.year, ( standard_month - 1) , salary_day)
           end_date = datetime(convert_date.year, standard_month, ( salary_day + 1))
@@ -346,8 +348,8 @@ class MonthReportData(APIView):
           #월급 날짜 21짜 부터 다음달 21일자 (+1) 까지 
 
           #print(convert_date)
-          print(start_date)
-          print(end_date)
+          #print(start_date)
+          #print(end_date)
 
           # today_data = models.Income.objects.filter(creator_id=userObject.id, 
           #                                     created_at__gte=convert_date)
