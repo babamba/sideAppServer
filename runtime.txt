@@ -1,2 +1,2 @@
 # djangoproject/runtime.txt
-python-3.6.5 # 프로젝트 파이썬 버전
+python-3.6.5
