@@ -1,2 +1,1 @@
-# djangoproject/runtime.txt
 python-3.6.5
